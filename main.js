@@ -19,8 +19,8 @@ class Drawing {
     onDrawing(e) {
         if (this.isDrawing) {
             const rect = this.canvas.getBoundingClientRect();
-            this.cordinate.x = e.clientX - rect.left; // Koordinat x relatif terhadap canvas
-            this.cordinate.y = e.clientY - rect.top; // Koordinat y relatif terhadap canvas
+            this.cordinate.x = e.clientX - rect.left;
+            this.cordinate.y = e.clientY - rect.top;
             this.drawingWithPen();
         }
     }
