@@ -59,12 +59,9 @@ class Drawing {
     drawingWithPen() {
         this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = this.defaultColor;
-
         this.ctx.lineTo(this.cordinate.x, this.cordinate.y);
         this.ctx.stroke();
     }
-
-    download() {}
 }
 
 const drawing = new Drawing();
