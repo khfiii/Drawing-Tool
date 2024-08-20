@@ -1,6 +1,8 @@
 class Drawing {
     constructor() {
         this.canvas = document.getElementById("canvas");
+        this.canvas.width = innerWidth;
+        this.canvas.height = innerHeight;
         this.ctx = this.canvas.getContext("2d");
         this.cordinate = { x: 0, y: 0 };
         this.defaultColor = "black";
@@ -19,8 +21,8 @@ class Drawing {
     onDrawing(e) {
         if (this.isDrawing) {
             const rect = this.canvas.getBoundingClientRect();
-            this.cordinate.x = e.clientX - rect.left;
-            this.cordinate.y = e.clientY - rect.top;
+            this.cordinate.x = e.layerX;
+            this.cordinate.y = e.layerY;
             this.drawingWithPen();
         }
     }
@@ -36,21 +38,24 @@ class Drawing {
 
     chooseColor() {
         this.colors.forEach((color) => {
+            color.style.border = 'none';
             color.addEventListener("click", () => {
                 if (color.classList.contains("black")) {
                     return (this.defaultColor = "black");
                 }
-                if (color.classList.contains("red")) {
+                else if (color.classList.contains("red")) {
                     return (this.defaultColor = "red");
                 }
-                if (color.classList.contains("yellow")) {
+                else if (color.classList.contains("yellow")) {
                     return (this.defaultColor = "yellow");
                 }
-                if (color.classList.contains("green")) {
+                else if (color.classList.contains("green")) {
                     return (this.defaultColor = "green");
                 }
-                if (color.classList.contains("blue")) {
+                else if (color.classList.contains("blue")) {
                     return (this.defaultColor = "blue");
+                }else{
+                    color.style.border = 'none';
                 }
             });
         });
